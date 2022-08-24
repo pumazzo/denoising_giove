@@ -40,8 +40,8 @@ def show_generator_output(sample_batched):
         #axes[i,0].ioff()
         axes[i,1].axis('off')
         #axes[i,1].ioff()
-        
-        
+
+
 def show_pred_batch(sample_batched,pred):
     """Show image with landmarks for a batch of samples."""
     k_batch, k_label_batch = sample_batched[0], sample_batched[1]

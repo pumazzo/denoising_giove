@@ -1,3 +1,4 @@
+# %%
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -48,8 +49,8 @@ def plot_pair(X_test,y_test,vol=1,fetta=12):
     axes[0].set_title("data")
     axes[1].imshow(im_GT[fetta,:])
     axes[1].set_title("target")
-    
-    
+
+
 # %% normalization in k space
 
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Data transformation and augmentation: work in progress¶
 
 import numpy as np
@@ -22,7 +23,7 @@ class ToTensor_torch(nn.Module):
             image = torch.from_numpy(x)
             image_cat = torch.cat((image.real,image.imag),dim=1)
             return image_cat
-        
+
 class norm_tensor(nn.Module):
 
     def __init__(self):
@@ -66,7 +67,7 @@ class AddNoise_torch(nn.Module):
 
         return image,label
 
- 
+
 class FreqToSpace(nn.Module):
 
     def __init__(self):
@@ -80,8 +81,8 @@ class FreqToSpace(nn.Module):
             im = torch.cat((im.real,im.imag),dim=1)
             
             return im
-        
-      
+
+
 class SpaceToFreq(nn.Module):
 
     def __init__(self):
@@ -95,7 +96,7 @@ class SpaceToFreq(nn.Module):
             z = torch.unsqueeze(z,dim=1)
             z = torch.cat((z.real,z.imag),dim=1)
             return z
-        
+
 class concatenateImageAndLabels(nn.Module):
     """To apply the same transformation in both image and labels the two arrays are stacked, transformed and then splitted back"""
 
@@ -107,7 +108,7 @@ class concatenateImageAndLabels(nn.Module):
         with torch.no_grad():
             z=torch.cat((x[0],x[1]),dim=0)
             return z
-        
+
 class splitImageAndLabels(nn.Module):
 
     def __init__(self,batch_size):
@@ -119,7 +120,7 @@ class splitImageAndLabels(nn.Module):
         with torch.no_grad():
             x,y=torch.chunk(z,2,dim=0)
             return x,y
-        
+
 class prob_Rcrop(nn.Module):
 
     def __init__(self,p):
@@ -136,7 +137,7 @@ class prob_Rcrop(nn.Module):
                 return x
             else:
                 return x
-            
+
 
 class phase_multiplication(nn.Module):
 
@@ -156,7 +157,7 @@ class phase_multiplication(nn.Module):
                 return x
             else:
                 return x
-            
+
 class prob_PADcrop(nn.Module):
 
     def __init__(self,p):
@@ -173,7 +174,7 @@ class prob_PADcrop(nn.Module):
                 return x
             else:
                 return x       
-            
+
 class prob_Affine(nn.Module):
 
     def __init__(self,p):
